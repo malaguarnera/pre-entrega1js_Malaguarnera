@@ -19,14 +19,6 @@ header h1{
     color: #fff;
     padding: 30px 0;
 }
-.body_index{
-    width: 100%;
-    height: 100%;
-    background-image: url(./img/imgindex.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 .contenedor_merchan{
     max-width: 1200px;
     padding: 10px;
@@ -82,6 +74,74 @@ header h1{
     padding: 5px 15px;
     border-radius: 5px;
     cursor: pointer;
+}
+/*seccion login*/
+
+.main_padre{
+    width: 100%;
+    height: 100%;
+    background-image: url(./img/imgindex.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main_padre .formulario_login{
+
+    width: 450px;
+    background: rgb(255 255 255/75%);
+    border-radius: 10px;
+    padding: 35px 40px;
+    backdrop-filter: blur(5px);
+
+}
+.main_padre .formulario_login h1{
+    font-variant: small-caps;
+    font-size: 45px;
+    text-align: center;
+    margin-bottom: 15px;
+
+}
+.main_padre .formulario_login h1 span{
+    color: #f57224;
+}
+.main_padre .formulario_login .input_simple input{
+    width:100%;
+    padding: 14px 10px;
+    border: 1px solid rgba(0,0,0,0.352);
+    outline: none;
+    background-color: transparent;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-family: sans-serif;
+}
+.boton_submit{
+    text-align: center;
+}
+.boton_submit button{
+    padding: 13px 30px;
+    background-color: #f57224;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+.tener_cuenta{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.tener_cuenta a{
+    color: rgba(34,34,34);
+    text-decoration: none;
+    font-family: sans-serif;
+    
 }
 /*seccion carrito*/
 .carrito{
