@@ -1,19 +1,41 @@
+const monedaEl_one = document.getElementById('moneda_uno');
+const monedaEl_two = document.getElementById('moneda_dos');
+const cantidadEl_one = document.getElementById('cantidad_uno');
+const cantidadEl_two = document.getElementById('cantidad_dos');
+const cambioEl = document.getElementById('cambio');
+const tazaEl = document.getElementById('taza');
 
-function convertir(){
-    let valore = parseInt(document.getElementById("valor").value);
-    let resultado = 0;
-    let dolar = 388;
-    let euro = 233;
-    if (document.getElementById("uno")) {
-        resultado = valore / dolar;
-        alert("el cambio de pesos argentinos a dolares es : $"+ resultado);
-        
-    }
-        else if(document.getElementById("dos")){
-            resultado = valore / euro;
-            alert("el cambio de pesos argentinos a euros es : $"+ resultado);
-        }
-            else{
-                alert("completa todos los campos");
-            }
+
+// Fetch Exchange Rate and Update the DOM
+function calculate(){
+    const moneda_one = monedaEl_one.value;
+    const moneda_two = monedaEl_two.value;
+
+   fetch(`https://api.exchangerate-api.com/v4/latest/${moneda_one}`)
+   .then(res => res.json() )
+   .then(data => {
+       const taza = data.rates[moneda_two];
+       
+       cambioEl.innerText = `1 ${moneda_one} = ${taza} ${moneda_two}`;
+
+       cantidadEl_two.value = (cantidadEl_one.value * taza).toFixed(2);
+
+    } );
+    
 }
+
+//Event listeners
+monedaEl_one.addEventListener('change', calculate);
+cantidadEl_one.addEventListener('input', calculate);
+monedaEl_two.addEventListener('change', calculate);
+cantidadEl_two.addEventListener('input', calculate);
+
+taza.addEventListener('click', () =>{
+    const temp = monedaEl_one.value;
+    monedaEl_one.value = monedaEl_two.value;
+    monedaEl_two.value = temp;
+    calculate();
+} );
+
+
+calculate();
